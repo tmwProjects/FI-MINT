@@ -155,7 +155,8 @@ def main():
     logo_sidebar_markdown = f'<img src="data:image/png;base64,{logo_base64_str}" alt="logo" style="display:block; margin:auto; width:330px;height:330px;">'
     st.sidebar.markdown(logo_sidebar_markdown, unsafe_allow_html=True)
 
-    st.sidebar.title("Datei Upload")
+    st.sidebar.title("Data Upload")
+    st.sidebar.write("Please upload your files as ZIP format. Note that our system only reads files from the root directory of the ZIP archive. Subdirectories are not recognized. All relevant files should therefore be placed in the main directory.")
     uploaded_file = st.sidebar.file_uploader("Upload ZIP file")
 
     # Benutzerdefinierte Gewichtungseinstellungen
@@ -166,6 +167,12 @@ def main():
         for item in custom_weight_input.split(','):
             key, weight = item.split(':')
             custom_weights[key.strip()] = int(weight)
+
+    st.sidebar.markdown("""
+        [![Visit my site](https://img.shields.io/badge/Visit%20my%20site-Online-important)](https://tmwprojects.github.io/)
+        [![Donate on Liberapay](https://img.shields.io/badge/Donate-Liberapay-yellow)](https://liberapay.com/tmwProjects/donate)
+        <a href="https://www.buymeacoffee.com/tmwcontactQ"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" height="20.4px"></a>
+        """, unsafe_allow_html=True)
 
     files = []
     if uploaded_file is not None:
